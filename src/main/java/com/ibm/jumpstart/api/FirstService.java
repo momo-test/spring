@@ -21,6 +21,9 @@ public class FirstService implements Servable {
 	logger.info("The first service function is got executed : "+ this);
 	}
 	
+	public String getService ( ) {
+		return "First Service is Called "; 
+	}
 
 	
 }
