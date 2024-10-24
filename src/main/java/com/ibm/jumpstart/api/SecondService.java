@@ -20,4 +20,10 @@ private static final Logger logger =    LoggerFactory.getLogger(SecondService.cl
 
 	}
 
+	@Override
+	public String getService ( ) {
+		return "Second Service is Called "; 
+	}
+
+
 }

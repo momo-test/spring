@@ -10,16 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
 
 	@Autowired
-	@Qualifier("second")
-
+	@Qualifier("first")
 	private Servable servable ; 
 	
 	@GetMapping("/moin")
 	public String sendResponse() {
     servable.showService() ; 
-	
-    System.out.println( "Request second bean");
-    
+	System.out.println( servable.getService()) ; 
     return "Moin";
 	}
 
