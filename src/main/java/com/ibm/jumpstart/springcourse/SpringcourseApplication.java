@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.PropertySource;
 
 import com.ibm.jumpstart.api.Controller;
 
@@ -14,8 +13,6 @@ import jakarta.annotation.PostConstruct;
 
 @ComponentScan("com.ibm.jumpstart.api")
 @SpringBootApplication
-@PropertySource("classpath:dev.properties")
-
 public class SpringcourseApplication {
 
 	private static Logger logger = LoggerFactory.getLogger(SpringcourseApplication.class); 
