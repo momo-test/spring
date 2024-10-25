@@ -47,7 +47,7 @@ class SpringcourseApplicationTests {
 	@Test
 	void contextLoads() {
 	
-	assertEquals( springcourseApplication.getActiveProfile() , "dev"); 
+	assertEquals( springcourseApplication.getActiveProfile() , "none"); 
 
 	SpringcourseApplication.main(new String[]{"firstArg" , "secondArg", "fourthArg"}) ;
 
