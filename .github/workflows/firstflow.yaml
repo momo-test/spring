@@ -30,9 +30,19 @@ jobs:
                mkdir staging 
                cp target/*.jar staging
 
-              
+            
             - name: persist the workflow 
               uses: actions/upload-artifact@v4
               with:
                 name: java artifact
                 path: staging 
+
+
+            - name: setup a database 
+              uses: ikalnytskyi/action-setup-postgres@v7
+
+            - run: psql postgresql://postgres:postgres@localhost:5432/postgres -c "SELECT 1"
+            - run: psql service=postgres -c "SELECT 1"
+            - run: psql -c "SELECT 1"
+              env:
+                PGSERVICE: postgres
