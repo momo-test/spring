@@ -11,6 +11,10 @@ jobs:
             # Provide the password for postgres
               env:
                 POSTGRES_PASSWORD: postgres
+                POSTGRES_HOST: postgres
+                POSTGRES_PORT: 5432
+                POSTGRES_USER: postgres
+                POSTGRES_NAME: db
             # Set health checks to wait until postgres has started
               ports:
                 - 5432:5432
@@ -37,13 +41,7 @@ jobs:
 
             - name: run test case
               run: mvn test
-              env:
-                POSTGRES_HOST: postgres
-                POSTGRES_PORT: 5432
-                POSTGRES_USER: postgres
-                POSTGRES_NAME: db
-
-
+              
             - name: Build with Maven
               run: mvn clean install package
          
