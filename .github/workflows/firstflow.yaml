@@ -3,6 +3,22 @@ on: push
 jobs: 
     test:
         runs-on: ubuntu-latest
+
+        services:
+             postgres:
+            # Docker Hub image
+              image: postgres
+            # Provide the password for postgres
+              env:
+                POSTGRES_PASSWORD: postgres
+            # Set health checks to wait until postgres has started
+              ports:
+                - 5432:5432
+              options: >-
+                    --health-cmd pg_isready
+                    --health-interval 10s
+                    --health-timeout 5s
+
         steps:
             - name: Get Code
               uses: actions/checkout@v3
@@ -21,9 +37,13 @@ jobs:
 
             - name: run test case
               run: mvn test
+              env:
+                POSTGRES_HOST: postgres
+                POSTGRES_PORT: 5432
 
             - name: Build with Maven
               run: mvn clean install package
+         
 
             - name: save the artifact 
               run: |
@@ -37,12 +57,4 @@ jobs:
                 name: java artifact
                 path: staging 
 
-
-            - name: setup a database 
-              uses: ikalnytskyi/action-setup-postgres@v7
-
-            - run: psql postgresql://postgres:postgres@localhost:5432/postgres -c "SELECT 1"
-            - run: psql service=postgres -c "SELECT 1"
-            - run: psql -c "SELECT 1"
-              env:
-                PGSERVICE: postgres
+         
