@@ -1,6 +1,11 @@
 package com.ibm.jumpstart.springcourse;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -56,5 +61,25 @@ class SpringcourseApplicationTests {
 
 	logger.info(firstServiceMock.getService());
 	}
+
+	@Test
+	void testDatabase () throws SQLException {
+
+		    
+            // Get database credentials from DatabaseConfig class
+            var jdbcUrl = "jdbc:postgresql://postgres:5432";
+            var user = "postgres";
+            var password = "postgres";
+
+            // Open a connection
+      	 	Connection connection = DriverManager.getConnection(jdbcUrl, user, password);
+
+			assertNotNull(connection);
+			
+	}
+
+	
+
+
 
 }
