@@ -67,7 +67,7 @@ class SpringcourseApplicationTests {
 
 		    
             // Get database credentials from DatabaseConfig class
-            var jdbcUrl = "jdbc:postgresql://postgres:5432/db";
+            var jdbcUrl = "jdbc:postgresql://localhost:5432/db";
             var user = "postgres";
             var password = "postgres";
 
