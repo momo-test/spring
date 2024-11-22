@@ -59,7 +59,7 @@ class SpringcourseApplicationTests {
 	FirstService  firstServiceMock = mock(FirstService.class) ; 
 	when(firstServiceMock.getService()).thenReturn("We have call nothing") ; 
 
-	logger.info(firstServiceMock.getService());
+	logger.info(firstServiceMock.getService()+ " ");
 	}
 
 	@Test
