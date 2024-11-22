@@ -73,7 +73,7 @@ class SpringcourseApplicationTests {
 
             // Open a connection
       	 	Connection connection = DriverManager.getConnection(jdbcUrl, user, password);
-
+			
 			assertNotNull(connection);
 			
 	}

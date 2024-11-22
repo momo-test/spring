@@ -34,7 +34,7 @@ jobs:
                 cache: maven    
        
             - name: clear project
-              run: mvn clean
+              run:  mvn clean
 
             - name: compile the project
               run: mvn compile
@@ -59,3 +59,15 @@ jobs:
                 path: staging 
 
          
+            
+            - name: Set up AWS CLI
+              run: |
+                curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+                unzip awscliv2.zip
+                sudo ./aws/install
+
+            - name: Configure AWS CLI
+              run: |
+                echo ${{ secrets.AWS_ACCESS_KEY_ID }}
+                echo ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+                echo ${{ secrets.AWS_REGION }}
